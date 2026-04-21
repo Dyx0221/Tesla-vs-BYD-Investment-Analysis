@@ -2,21 +2,40 @@
 
 ## 1. Problem Definition
 ### Target Audience
-This data product is designed for **Individual Investors** who are evaluating opportunities in the Electric Vehicle (EV) sector but are undecided between two different market leaders: Tesla and BYD.
+Designed for **Individual Investors** evaluating the Electric Vehicle (EV) sector.
 
 ### The Business Challenge
-As the EV market shifts from early adoption to mass-market competition, investors face a strategic dilemma: 
-1. **Tesla (TSLA)** represents a "Tech-Premium" model with high R&D intensity and software-driven margins.
-2. **BYD (1211.HK)** represents a "Manufacturing-Scale" model, leveraging vertical integration and diverse product lines.
+As the EV price war intensifies, investors must choose between two different leaders:
+- **Tesla (TSLA):** High-tech brand premium and software-driven margins.
+- **BYD (1211.HK):** Manufacturing scale, vertical integration, and diverse product lines.
 
-The core problem this project addresses is: **Which company demonstrates better financial resilience and R&D efficiency in the face of the global EV price war?**
+**Core Question:** Which company demonstrates better financial resilience and R&D efficiency?
 
-## 2. Analytical Scope
-Using Python, this project retrieves real-time financial data to analyze:
-* **Profitability:** Comparing Gross and Net Margins to see who survives price cuts better.
-* **R&D Efficiency:** Measuring "R&D Intensity" (R&D spend as % of Revenue) to evaluate future innovation potential.
-* **Growth Momentum:** Analyzing year-on-year Revenue Growth to track market share expansion.
+## 2. Methodology & Technical Solutions
+### Data Sourcing
+- **Primary Source:** Real-time financial data via `yfinance` (Yahoo Finance API).
+- **Fallback Mechanism:** Due to frequent API rate limits (RateLimitError) observed during development, this product includes a **Hybrid Data Logic**. If the live database connection fails, it automatically switches to a validated historical dataset to ensure tool availability.
 
-## 3. Data Sources
-* **Primary Source:** Financial statements retrieved via the `yfinance` library (Yahoo Finance).
-* **Timeframe:** 2020 - 2024 (Annual data).
+### Tech Stack
+- **Python:** Data processing and analysis.
+- **Pandas:** Financial statement cleaning.
+- **Seaborn/Matplotlib:** Professional investment visualization.
+
+## 3. Visual Dashboard
+*(Once you upload your screenshot, add it here)*
+![Tesla vs BYD Analysis](analysis_chart.png)
+
+## 4. Key Insights & Recommendations
+Based on the data fetched from the analysis:
+
+- **Profitability:** Tesla's gross margin peak in 2022 has eroded due to price cuts, while BYD shows stronger resilience through its vertically integrated battery supply chain.
+- **Innovation:** BYD’s R&D intensity has trended upwards, recently surpassing Tesla's, indicating aggressive investment in new battery tech.
+- **Market Growth:** Both companies face a slowdown from 2021 peaks, but BYD maintains higher relative growth in the mass-market segment.
+
+### Investment Verdict
+- **Choose Tesla** for high-tech premium positioning and autonomous driving potential.
+- **Choose BYD** for cost-efficiency and global mass-market domination.
+
+## 5. How to Run
+1. Open the `.ipynb` file in Google Colab or JupyterLab.
+2. Run all cells. The script will handle API errors automatically and display the charts.
