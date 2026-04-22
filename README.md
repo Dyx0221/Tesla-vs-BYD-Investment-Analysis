@@ -2,68 +2,64 @@
 
 ## 1. Problem Definition
 ### Target Audience
-Designed for **Individual Investors** and **Market Analysts** evaluating the Electric Vehicle (EV) sector.
+Designed for **Individual Investors** evaluating the Electric Vehicle (EV) sector.
 
 ### The Business Challenge
-As the global EV market matures and price wars intensify, investors face a critical choice between two dominant yet distinct business models:
-- **Tesla (TSLA):** A tech-centric pioneer with a focus on software-driven margins and autonomous driving potential.
-- **BYD (1211.HK):** A manufacturing powerhouse leveraging vertical integration and battery expertise to capture the mass market.
+As the EV price war intensifies, investors must choose between two different leaders:
+- **Tesla (TSLA):** High-tech brand premium and software-driven margins.
+- **BYD (1211.HK):** Manufacturing scale, vertical integration, and diverse product lines.
 
-[cite_start]**Core Question:** Which company demonstrates superior financial resilience, R&D efficiency, and growth sustainability in a volatile quarterly landscape? 
+**Core Question:** Which company demonstrates better financial resilience and R&D efficiency at a quarterly granular level?
 
 ---
 
 ## 2. Methodology & Data Sources
 ### Data Sourcing
-- **Live API Data:** Real-time quarterly financial metrics retrieved via the `yfinance` (Yahoo Finance) library.
-- [cite_start]**Local Backup Dataset:** A high-density dataset (`ev_data_backup.csv`) is included to ensure project **reproducibility** regardless of API availability. [cite: 33, 87]
+- **Primary Source:** Real-time quarterly financial data via `yfinance` (Yahoo Finance API).
+- **Local Dataset:** To comply with reproducibility requirements, a high-density dataset `ev_data_backup.csv` is generated and included.
 
-### Advanced Data Logic (Technical Execution)
-To provide more granular insights than standard annual reports, this project implements a **Monthly-to-Quarterly Resampling Logic**:
-1. **Sampling:** Generating high-frequency data points based on monthly financial proxies.
-2. **Aggregation:** Grouping and averaging data into quarterly buckets to align with official earnings cycles.
-3. [cite_start]**Robust Fallback:** A "Hybrid Load" system that prioritizes live API data but automatically triggers the local backup if rate limits are hit, ensuring 100% uptime for reviewers. 
+### Hybrid Data Logic & Resampling (Technical Execution)
+This project implements an advanced data pipeline to ensure **100% uptime** and depth:
+1. **Resampling Logic:** The script simulates/processes monthly financial proxies and aggregates them into **Quarterly averages**, providing a smoother and more detailed trend analysis than standard annual figures.
+2. **Fallback Mechanism:** The system prioritizes live API fetching but automatically switches to the high-density local CSV if the API is restricted, ensuring the dashboard always renders.
 
 ### Tech Stack
-- **Python:** For data engineering and statistical processing.
-- **Pandas:** For time-series resampling and data cleaning.
-- **Matplotlib & Seaborn:** For professional-grade investment visualizations.
+- **Python:** Data processing and time-series analysis.
+- **Pandas:** Monthly-to-quarterly resampling, grouping, and merging.
+- **Seaborn/Matplotlib:** Professional-grade investment visualization.
 
 ---
 
-## 3. Repository Structure
-- `Analysis.ipynb`: The main Jupyter Notebook containing the 4-step analytical workflow.
-- `ev_data_backup.csv`: The pre-processed quarterly dataset used for fallback and testing.
-- [cite_start]`analysis_chart.png`: A static export of the final visualization dashboard. [cite: 91]
+## 3. Visual Dashboard
+![Tesla vs BYD Analysis](analysis_chart.png)
 
 ---
 
 ## 4. Key Insights & Interpretation
-Based on the visualized quarterly trends:
-- **Profitability:** Tesla’s gross margin leadership has faced pressure from 2023 price cuts, while BYD's vertical integration provides a stable floor for profitability.
-- **Innovation (R&D):** BYD’s R&D intensity shows a steady upward trajectory, reflecting its massive investment in Blade Battery and DM-i hybrid technologies.
-- [cite_start]**Growth:** Both companies show quarterly volatility, but the "Quarterly Showdown" highlights BYD's aggressive market expansion compared to Tesla's more mature growth phase. 
+Based on the visualized quarterly data:
+- **Profitability:** Tesla's gross margin peak has narrowed due to strategic price cuts. BYD shows strong resilience, likely due to its vertically integrated battery supply chain.
+- **Innovation (R&D):** BYD’s R&D intensity shows a significant upward trend, recently competing closely with Tesla's, indicating aggressive investment in next-gen tech.
+- **Market Growth:** The quarterly view reveals that while both face volatility, BYD maintains consistent relative growth in the global mass-market segment.
 
 ---
 
 ## 5. How to Run
-[cite_start]To reproduce the analysis, open `Analysis.ipynb` and run the cells in the following order: [cite: 38]
-
-1. **Cell 1: Environment Setup** - Installs and updates all necessary Python libraries.
-2. **Cell 2: Local Data Prep** - Generates the high-density `ev_data_backup.csv` file.
-3. **Cell 3: Core Logic** - Connects to the API and handles the data loading/merging.
-4. **Cell 4: Visual Dashboard** - Renders the final 2x2 investment analysis panel.
+This project is structured into **4 sequential steps** for maximum clarity:
+1. **Cell 1 (Setup):** Run to install and update necessary libraries.
+2. **Cell 2 (Data Prep):** Run to generate the high-density `ev_data_backup.csv` through resampling logic.
+3. **Cell 3 (Core Logic):** Connect to the API and load/merge the final dataset.
+4. **Cell 4 (Visualization):** Render the dashboard and automatically save the results as `analysis_chart.png`.
 
 ---
 
 ## 6. Reflection & Professional Practice
 ### AI Disclosure
-This project utilized **Gemini (AI)** for the following professional purposes:
-- Designing the robust error-handling logic for API rate-limiting.
-- Developing the monthly-to-quarterly data resampling script.
-- Optimizing code structure into a modular 4-cell format for better readability.
-- [cite_start]Structuring this documentation to meet academic "Excellent" standards. [cite: 20, 87]
+This project was developed with the assistance of AI (Gemini) for the following professional purposes:
+- Designing the monthly-to-quarterly data resampling and aggregation logic.
+- Troubleshooting `yfinance` API quarterly statement retrieval and error-handling.
+- Optimizing code structure into a modular 4-cell format for better academic presentation.
 
 ### Limitations & Future Work
-- **External Factors:** Current analysis is limited to internal financials; future versions will include macroeconomic data (e.g., lithium price index).
-- **Sentiment Analysis:** Integrating social media sentiment could provide a more holistic view of consumer brand loyalty.
+- **Macro Factors:** The current model focuses on internals; future work will integrate external factors like global lithium price indexes.
+- **Scope Expansion:** Integrating social sentiment analysis (e.g., from X or Reddit) would provide a more holistic view of brand health.
+- **Technical Improvement:** Transitioning from CSV to a local SQLite database for larger, multi-company comparisons.
